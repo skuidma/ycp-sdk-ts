@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/skuidma/ycp-sdk-ts/issues"
   },
-  "homepage": "https://github.com/skuidma/ycp-sdk-ts#readme"
+  "homepage": "https://github.com/skuidma/ycp-sdk-ts#readme",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
 }
