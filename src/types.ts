@@ -62,3 +62,23 @@ export interface PaymentToken {
 
   paymentUrl: string;
 }
+
+/**
+ * Transaction returned via the API's transactions endpoint
+ */
+export interface Transaction {
+  id: string;
+  status: number;
+
+  order_id: string;
+
+  amount: number;
+
+  currency: string;
+
+  base_currency: string | null;
+
+  base_amount: number | null;
+
+  created_at: Date;
+}
