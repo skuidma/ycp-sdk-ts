@@ -1,4 +1,4 @@
-import { Youcanpay } from '../src/lib/youcanpay';
+import { Youcanpay } from '../src';
 import { ApiClient } from '../src/lib/api-client';
 
 describe('Youcanpay', () => {
@@ -17,6 +17,8 @@ describe('Youcanpay', () => {
         amount: 1000,
         currency: 'MAD',
         customer_ip: '127.0.0.1',
+        success_url: 'somewhere',
+        error_url: 'somewhere2',
       };
       apiClient.post = jest.fn().mockReturnValue({ token: { id: 'token-id' } });
       apiClient.paymentUrl = jest.fn().mockReturnValue('payment-url');
@@ -33,6 +35,8 @@ describe('Youcanpay', () => {
         amount: 1000,
         currency: 'MAD',
         customer_ip: '127.0.0.1',
+        success_url: 'somewhere',
+        error_url: 'somewhere2',
         customer: {
           name: 'John Doe',
           city: 'Fes',
