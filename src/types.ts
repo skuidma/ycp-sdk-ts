@@ -45,6 +45,16 @@ export interface TokenizePaymentRequest {
   customer?: CustomerInfo;
 
   metadata?: { [key: string]: any };
+
+  /**
+   * URL where to redirect to when payment is successful
+   */
+  success_url: string;
+
+  /**
+   * URL where to redirect to when payment is not successful
+   */
+  error_url: string;
 }
 
 export interface PaymentToken {
