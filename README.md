@@ -1,0 +1,63 @@
+# YouCan Pay SDK for NodeJS
+[![Tests](https://github.com/skuidma/ycp-sdk-ts/actions/workflows/node.js.yml/badge.svg)](https://github.com/skuidma/ycp-sdk-ts/actions/workflows/node.js.yml)
+![npm](https://img.shields.io/npm/dw/ycp-sdk-ts)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/skuidma/ycp-sdk-ts)
+
+
+Unofficial SDK to use the YouCan Pay service
+
+## Installation
+```shell
+# Using npm
+npm i ycp-sdk-ts
+# Using yarn
+yarn add ycp-sdk-ts
+```
+
+## Usage
+```ts
+import { YcpFactory } from 'ycp-sdk-ts';
+
+// Create a Youcanpay instance using the factory
+const ycp = YcpFactory.ycp({
+  // Your API's private key, you can get it from Dashboard > Settings > API Keys
+  privateKey: '',
+  // True to enable Sandbox mode
+  isSandboxMode: true,
+});
+
+const token = await ycp.tokenizePayment({
+  order_id: '',
+  amount: 1337,
+  currency: 'MAD',
+  customer_ip: '13.37.4.2',
+  // Information about the customer
+  customer: {
+    name: 'Hmida Bar9al',
+    address: 'Hay takadom',
+    zip_code: '21',
+    city: 'Fes',
+    state: 'Chaouia-ourdigha',
+    country_code: 'MA',
+    phone: '06',
+    email: 'hmida.bar9al@gmail.com',
+  },
+  // Metadata that will be returned via the webhook
+  metadata: {
+    anything: 'some value',
+  },
+});
+
+console.log(token)
+```
+The result will be:
+
+```json
+{
+  "tokenId": "payment-token-to-be-used",
+  "paymentUrl": "https://youcanpay.com/payment-form/token-id"
+}
+```
+
+You can use `tokenId` to [display the payment form](https://youcanpay.com/docs#form_display)
+or use the `paymentUrl` to take the user directly to the payment page.
