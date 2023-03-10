@@ -89,4 +89,76 @@ describe('ApiClient', () => {
       );
     });
   });
+
+  describe('get', () => {
+    it('should get correct url with sandbox mode on', async () => {
+      httpClient.get = jest.fn().mockReturnValue({
+        data: {
+          key: 'value',
+        },
+      });
+      await sandboxClient.get('endpoint-here', {
+        data: 'value',
+      });
+      expect(httpClient.get).toBeCalledWith('https://youcanpay.com/sandbox/api/endpoint-here?data=value');
+    });
+
+    it('should get correct url with sandbox mode off', async () => {
+      httpClient.get = jest.fn().mockReturnValue({
+        data: {
+          key: 'value',
+        },
+      });
+      await prodClient.get('endpoint-here', {
+        data: 'value',
+      });
+      expect(httpClient.get).toBeCalledWith('https://youcanpay.com/api/endpoint-here?data=value');
+    });
+
+    it('should encode query parameters', async () => {
+      httpClient.get = jest.fn().mockReturnValue({
+        data: {
+          key: 'value',
+        },
+      });
+      await prodClient.get('endpoint-here', {
+        query: '?=value%',
+        test: '?yes',
+      });
+      expect(httpClient.get).toBeCalledWith('https://youcanpay.com/api/endpoint-here?query=%3F%3Dvalue%25&test=%3Fyes');
+    });
+
+    it('should return correct response data', async () => {
+      const resp = {
+        data: {
+          key: 'value',
+        },
+      };
+      httpClient.get = jest.fn().mockReturnValue(resp);
+      expect(await sandboxClient.get('end', {})).toEqual(resp.data);
+    });
+
+    it('should throw correct exception when networking problem', () => {
+      httpClient.get = jest.fn().mockImplementation(() => {
+        const error = new AxiosError();
+        error.cause = new Error('Thrown cause');
+        throw error;
+      });
+      expect(async () => await sandboxClient.get('test', {})).rejects.toThrow('Thrown cause');
+    });
+
+    it('should throw correct exception when http problem', () => {
+      httpClient.get = jest.fn().mockImplementation(() => {
+        const error = new AxiosError();
+        error.response = {
+          status: 500,
+          data: { error: 'Oops' },
+        } as unknown as AxiosResponse;
+        throw error;
+      });
+      expect(async () => await sandboxClient.get('test', {})).rejects.toThrow(
+        new ApiHttpException(500, { error: 'Oops' }),
+      );
+    });
+  });
 });
