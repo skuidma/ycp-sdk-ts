@@ -22,7 +22,7 @@ interface CustomerInfo {
     email?: string;
 }
 
-interface TokenizePayment {
+interface TokenizePaymentRequest {
     /**
      * The order ID corresponding to the transaction, used to track which order the transaction is for on your store.
      */
