@@ -8,7 +8,7 @@ export class Youcanpay {
    * @see https://youcanpay.com/docs/api#tokenize_payment
    */
   async tokenizePayment(data: TokenizePaymentRequest): Promise<PaymentToken> {
-    let payload = { ...data, pri_key: this.privateKey };
+    const payload = { ...data, pri_key: this.privateKey };
 
     const response = await this.apiClient.post('tokenize', payload);
     return {
