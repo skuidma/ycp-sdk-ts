@@ -1,6 +1,6 @@
 {
   "name": "ycp-sdk-ts",
-  "version": "0.0.2-beta",
+  "version": "0.0.3-beta",
   "description": "Unofficial YouCan Pay NodeJS SDK built using Typescript",
   "main": "index.js",
   "types": "lib/index.d.ts",
