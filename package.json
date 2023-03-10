@@ -1,0 +1,24 @@
+{
+  "name": "ycp-sdk-ts",
+  "version": "0.0.1-beta",
+  "description": "Unofficial YouCan Pay NodeJS SDK built using Typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/skuidma/ycp-sdk-ts.git"
+  },
+  "keywords": [
+    "youcanpay",
+    "youcan",
+    "youcanpay-sdk"
+  ],
+  "author": "Mehdi Bounya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/skuidma/ycp-sdk-ts/issues"
+  },
+  "homepage": "https://github.com/skuidma/ycp-sdk-ts#readme"
+}
