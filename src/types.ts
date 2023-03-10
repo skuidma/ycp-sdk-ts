@@ -14,10 +14,10 @@ interface YoucanpayConfig {
 interface CustomerInfo {
     name?: string;
     address?: string;
-    zipCode?: string;
+    zip_code?: string;
     city?: string;
     state?: string;
-    countryCode?: string;
+    country_code?: string;
     phone?: string;
     email?: string;
 }
@@ -26,7 +26,7 @@ interface TokenizePaymentRequest {
     /**
      * The order ID corresponding to the transaction, used to track which order the transaction is for on your store.
      */
-    orderId: string;
+    order_id: string;
 
     /**
      * Integer representing the payment amount in minor units
@@ -40,9 +40,9 @@ interface TokenizePaymentRequest {
      */
     currency: string;
 
-    customerIp: string;
+    customer_ip: string;
 
-    customerInfo?: CustomerInfo;
+    customer?: CustomerInfo;
 
     metadata?: { [key: string]: any; };
 }
