@@ -1,4 +1,4 @@
-interface YoucanpayConfig {
+export interface YoucanpayConfig {
   /**
    * Your merchant's private key, can be found in your account's settings
    */
@@ -11,7 +11,7 @@ interface YoucanpayConfig {
   isSandboxMode?: boolean;
 }
 
-interface CustomerInfo {
+export interface CustomerInfo {
   name?: string;
   address?: string;
   zip_code?: string;
@@ -22,7 +22,7 @@ interface CustomerInfo {
   email?: string;
 }
 
-interface TokenizePaymentRequest {
+export interface TokenizePaymentRequest {
   /**
    * The order ID corresponding to the transaction, used to track which order the transaction is for on your store.
    */
@@ -47,7 +47,7 @@ interface TokenizePaymentRequest {
   metadata?: { [key: string]: any };
 }
 
-interface PaymentToken {
+export interface PaymentToken {
   tokenId: string;
 
   paymentUrl: string;

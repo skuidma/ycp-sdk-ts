@@ -1,6 +1,7 @@
 import { Youcanpay } from './youcanpay';
 import { ApiClient } from './api-client';
 import axios from 'axios';
+import { YoucanpayConfig } from "../types";
 
 export class YcpFactory {
   static ycp(config: YoucanpayConfig): Youcanpay {

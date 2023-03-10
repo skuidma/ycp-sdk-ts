@@ -1,4 +1,5 @@
 import { ApiClient } from './api-client';
+import { PaymentToken, TokenizePaymentRequest } from '../types';
 
 export class Youcanpay {
   constructor(private readonly privateKey: string, private readonly apiClient: ApiClient) {}
