@@ -7,6 +7,8 @@ export class Youcanpay {
   /**
    * Generate a payment token
    * @see https://youcanpay.com/docs/api#tokenize_payment
+   * @throws ApiHttpException If the response has a non-successful status code
+   * @throws Error if there was a networking error
    */
   async tokenizePayment(data: TokenizePaymentRequest): Promise<PaymentToken> {
     const payload = { ...data, pri_key: this.privateKey };
@@ -20,6 +22,8 @@ export class Youcanpay {
 
   /**
    * Get transaction details
+   * @throws ApiHttpException If the response has a non-successful status code
+   * @throws Error if there was a networking error
    */
   async getTransaction(transactionId: string): Promise<Transaction> {
     const response = await this.apiClient.get('transactions/' + transactionId, {

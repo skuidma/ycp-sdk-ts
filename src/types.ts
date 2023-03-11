@@ -42,8 +42,15 @@ export interface TokenizePaymentRequest {
 
   customer_ip: string;
 
+  /**
+   * Details about the customer
+   */
   customer?: CustomerInfo;
 
+  /**
+   * Any extra details to attach with the payment
+   * This metadata will be included with the payment webhook
+   */
   metadata?: { [key: string]: any };
 
   /**
@@ -57,9 +64,18 @@ export interface TokenizePaymentRequest {
   error_url: string;
 }
 
+/**
+ * Token used to process a payment
+ */
 export interface PaymentToken {
+  /**
+   * Token ID to be used when rendering the payment form
+   */
   tokenId: string;
 
+  /**
+   * A URL for a standalone payment form on the YouCan Pay website
+   */
   paymentUrl: string;
 }
 
@@ -67,13 +83,32 @@ export interface PaymentToken {
  * Transaction returned via the API's transactions endpoint
  */
 export interface Transaction {
+  /**
+   * Transaction UUID
+   */
   id: string;
+
+  /**
+   * Transaction status
+   * TODO: make the possible values clearer and use an Enum instead
+   */
   status: number;
 
+  /**
+   * The order id you sent along the payment tokenization step
+   */
   order_id: string;
 
+  /**
+   * Integer representing the payment amount in minor units
+   * e.g. for 10 MAD the amount will be 1000
+   */
   amount: number;
 
+  /**
+   * ISO-4217 currency code.
+   * e.g. MAD
+   */
   currency: string;
 
   base_currency: string | null;

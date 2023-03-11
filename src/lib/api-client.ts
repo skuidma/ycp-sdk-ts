@@ -7,10 +7,14 @@ export class ApiClient {
   constructor(private readonly isSandboxMode: boolean, private readonly httpClient: Axios) {}
 
   /**
-   * Endpoint without the base url
-   * e.g.: Pass /tokenize to POST to https://youcanpay.com/api/tokenize
-   * @param endpoint
-   * @param payload
+   * Send a POST request
+   *
+   * @param endpoint Endpoint without the base url
+   * e.g.: Pass /tokenize to POST https://youcanpay.com/api/tokenize
+   *
+   * @param payload Payload to send
+   * @throws ApiHttpException If the response has a non-successful status code
+   * @throws Error if there was a networking error
    */
   async post(endpoint: string, payload: object): Promise<any> {
     try {
@@ -30,6 +34,14 @@ export class ApiClient {
     }
   }
 
+  /**
+   * Send a GET request
+   * @param endpoint Endpoint without the base url
+   * e.g.: Pass /tokenize to GET https://youcanpay.com/api/tokenize
+   * @param query Get parameters to add to the URL
+   * @throws ApiHttpException If the response has a non-successful status code
+   * @throws Error if there was a networking error
+   */
   async get(endpoint: string, query: { [key: string]: string }): Promise<any> {
     try {
       const url = new URL(this.getUrl(endpoint));
