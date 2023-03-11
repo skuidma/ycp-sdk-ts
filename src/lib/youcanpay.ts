@@ -1,5 +1,5 @@
 import { ApiClient } from './api-client';
-import { PaymentToken, TokenizePaymentRequest } from '../types';
+import { PaymentToken, TokenizePaymentRequest, Transaction } from '../types';
 
 export class Youcanpay {
   constructor(private readonly privateKey: string, private readonly apiClient: ApiClient) {}
@@ -15,6 +15,23 @@ export class Youcanpay {
     return {
       tokenId: response.token.id,
       paymentUrl: this.apiClient.paymentUrl(response.token.id),
+    };
+  }
+
+  /**
+   * Get transaction details
+   */
+  async getTransaction(transactionId: string): Promise<Transaction> {
+    const response = await this.apiClient.get('transactions/' + transactionId, {
+      pri_key: this.privateKey,
+    });
+    return {
+      ...response,
+      ...{
+        amount: parseInt(response.amount, 10),
+        base_amount: response.base_amount === null ? null : parseInt(response.base_amount, 10),
+        created_at: new Date(response.created_at),
+      },
     };
   }
 }

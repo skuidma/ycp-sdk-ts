@@ -55,4 +55,33 @@ describe('Youcanpay', () => {
       expect(apiClient.post).toBeCalledWith('tokenize', { ...data, pri_key: privKey });
     });
   });
+
+  describe('getTransaction', () => {
+    it('should return correct data types', async () => {
+      apiClient.get = jest.fn().mockReturnValue({
+        id: 'some-uuid-here',
+        status: 1,
+        order_id: 'order-uuid-here',
+        amount: '1337',
+        currency: 'MAD',
+        base_currency: null,
+        base_amount: '1337',
+        created_at: '2023-02-25T21:50:37.000000Z',
+      });
+
+      expect(await ycp.getTransaction('transaction-id')).toEqual({
+        id: 'some-uuid-here',
+        status: 1,
+        order_id: 'order-uuid-here',
+        amount: 1337,
+        currency: 'MAD',
+        base_currency: null,
+        base_amount: 1337,
+        created_at: new Date('2023-02-25T21:50:37.000000Z'),
+      });
+      expect(apiClient.get).toBeCalledWith('transactions/transaction-id', {
+        pri_key: privKey,
+      });
+    });
+  });
 });
