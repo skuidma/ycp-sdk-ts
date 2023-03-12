@@ -1,5 +1,6 @@
 import { ApiClient } from './api-client';
 import { PaymentToken, TokenizePaymentRequest, Transaction } from '../types';
+import * as crypto from 'crypto';
 
 export class Youcanpay {
   constructor(private readonly privateKey: string, private readonly apiClient: ApiClient) {}
@@ -37,5 +38,26 @@ export class Youcanpay {
         created_at: new Date(response.created_at),
       },
     };
+  }
+
+  /**
+   * Validate a webhook's signature
+   * @param webhookPayload Object of the payload e.g.: in ExpressJS you will pass request.body or the body as a JSON string
+   * @param expectedSignature The signature found in the X-Youcanpay-Signature header
+   */
+
+  validateWebhookSignature(webhookPayload: object | string, expectedSignature: string): boolean {
+    if (typeof webhookPayload !== 'string') {
+      webhookPayload = JSON.stringify(webhookPayload);
+    }
+
+    const actualSignature = crypto.createHmac('sha256', this.privateKey).update(webhookPayload).digest('hex');
+
+    // If they are not the same length timingSafeEqual will throw an error
+    if (expectedSignature.length !== actualSignature.length) {
+      return false;
+    }
+
+    return crypto.timingSafeEqual(Buffer.from(expectedSignature), Buffer.from(actualSignature));
   }
 }
