@@ -2,7 +2,7 @@
 [![Tests](https://github.com/skuidma/ycp-sdk-ts/actions/workflows/node.js.yml/badge.svg)](https://github.com/skuidma/ycp-sdk-ts/actions/workflows/node.js.yml)
 ![npm](https://img.shields.io/npm/dw/ycp-sdk-ts)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/skuidma/ycp-sdk-ts)
-
+![License](https://badgen.net/badge/license/MIT/blue)
 
 Unofficial SDK to use the YouCan Pay service
 
