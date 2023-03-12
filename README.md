@@ -64,10 +64,10 @@ console.log(token)
 ```
 The result will be:
 
-```json lines
+```json
 {
-  tokenId: "payment-token-to-be-used",
-  paymentUrl: "https://youcanpay.com/payment-form/token-id"
+  "tokenId": "payment-token-to-be-used",
+  "paymentUrl": "https://youcanpay.com/payment-form/token-id"
 }
 ```
 
