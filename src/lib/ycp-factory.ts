@@ -3,6 +3,9 @@ import { ApiClient } from './api-client';
 import axios from 'axios';
 import { YoucanpayConfig } from '../types';
 
+/**
+ * Factory to create an instance of Youcanpay
+ */
 export class YcpFactory {
   static ycp(config: YoucanpayConfig): Youcanpay {
     let isSandboxMode: boolean | undefined = config.isSandboxMode;

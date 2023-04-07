@@ -1,6 +1,11 @@
 import { Axios, AxiosError } from 'axios';
 import { ApiHttpException } from '../exceptions/api-http.exception';
 
+/**
+ * This is used to send HTTP requests and generate API urls.
+ * It is meant for internal use only
+ * @internal
+ */
 export class ApiClient {
   readonly BASE_URL = 'https://youcanpay.com';
 
