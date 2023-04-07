@@ -45,7 +45,6 @@ export class Youcanpay {
    * @param webhookPayload Object of the payload e.g.: in ExpressJS you will pass request.body or the body as a JSON string
    * @param expectedSignature The signature found in the X-Youcanpay-Signature header
    */
-
   validateWebhookSignature(webhookPayload: object | string, expectedSignature: string): boolean {
     if (typeof webhookPayload !== 'string') {
       webhookPayload = JSON.stringify(webhookPayload);
@@ -59,5 +58,13 @@ export class Youcanpay {
     }
 
     return crypto.timingSafeEqual(Buffer.from(expectedSignature), Buffer.from(actualSignature));
+  }
+
+  /**
+   * Generate a payment URL from the token
+   * @param token
+   */
+  paymentUrlFromToken(token: string): string {
+    return this.apiClient.paymentUrl(token);
   }
 }

@@ -166,4 +166,12 @@ describe('Youcanpay', () => {
       expect(ycp.validateWebhookSignature(webhookBody, 'short-signature')).toBeFalsy();
     });
   });
+
+  describe('paymentUrlFromToken', () => {
+    it('should return the correct payment url', () => {
+      apiClient.paymentUrl = jest.fn().mockReturnValue('returned-url');
+      expect(ycp.paymentUrlFromToken('token-here')).toEqual('returned-url');
+      expect(apiClient.paymentUrl).toBeCalledWith('token-here');
+    });
+  });
 });
