@@ -9,7 +9,10 @@ import { ApiHttpException } from '../exceptions/api-http.exception';
 export class ApiClient {
   readonly BASE_URL = 'https://youcanpay.com';
 
-  constructor(private readonly isSandboxMode: boolean, private readonly httpClient: Axios) {}
+  constructor(
+    private readonly isSandboxMode: boolean,
+    private readonly httpClient: InstanceType<typeof Axios>,
+  ) {}
 
   /**
    * Send a POST request
