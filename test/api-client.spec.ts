@@ -5,10 +5,10 @@ import { ApiHttpException } from '../src/exceptions/api-http.exception';
 describe('ApiClient', () => {
   let sandboxClient: ApiClient;
   let prodClient: ApiClient;
-  let httpClient: Axios;
+  let httpClient: InstanceType<typeof Axios>;
 
   beforeEach(() => {
-    httpClient = {} as unknown as Axios;
+    httpClient = {} as unknown as InstanceType<typeof Axios>;
     sandboxClient = new ApiClient(true, httpClient);
     prodClient = new ApiClient(false, httpClient);
   });
