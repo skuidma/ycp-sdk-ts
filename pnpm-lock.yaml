@@ -10,9 +10,9 @@ dependencies:
     version: 1.5.1
 
 devDependencies:
-  '@tsconfig/node14':
-    specifier: ^14.1.0
-    version: 14.1.0
+  '@tsconfig/node16':
+    specifier: ^16.1.0
+    version: 16.1.1
   '@types/jest':
     specifier: ^29.4.0
     version: 29.5.6
@@ -653,8 +653,8 @@ packages:
       '@sinonjs/commons': 3.0.0
     dev: true
 
-  /@tsconfig/node14@14.1.0:
-    resolution: {integrity: sha512-VmsCG04YR58ciHBeJKBDNMWWfYbyP8FekWVuTlpstaUPlat1D0x/tXzkWP7yCMU0eSz9V4OZU0LBWTFJ3xZf6w==}
+  /@tsconfig/node16@16.1.1:
+    resolution: {integrity: sha512-+pio93ejHN4nINX4pXqfnR/fPLRtJBaT4ORaa5RH0Oc1zoYmo2B2koG+M328CQhHKn1Wj6FcOxCDFXAot9NhvA==}
     dev: true
 
   /@types/babel__core@7.20.3:

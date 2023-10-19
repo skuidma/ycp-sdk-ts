@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/skuidma/ycp-sdk-ts#readme",
   "devDependencies": {
-    "@tsconfig/node14": "^14.1.0",
+    "@tsconfig/node16": "^16.1.0",
     "@types/jest": "^29.4.0",
     "@types/node": "^20.8.7",
     "jest": "^29.5.0",
