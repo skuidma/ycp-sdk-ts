@@ -2,8 +2,36 @@ import { ApiClient } from './api-client';
 import { PaymentToken, TokenizePaymentRequest, Transaction } from '../types';
 import * as crypto from 'crypto';
 
+/**
+ * The response from the tokenize endpoint, the one in the documentation is not accurate
+ * @see https://youcanpay.com/docs/api#tokenize_payment
+ */
+interface TokenizeResponse {
+  token: {
+    id: string;
+  };
+}
+
+/**
+ * The response from the transaction endpoint
+ * For field descriptions see the Transaction interface
+ */
+interface TransactionResponse {
+  id: string;
+  status: number;
+  order_id: string;
+  amount: string;
+  currency: string;
+  base_currency: string | null;
+  base_amount: string | null;
+  created_at: string;
+}
+
 export class Youcanpay {
-  constructor(private readonly privateKey: string, private readonly apiClient: ApiClient) {}
+  constructor(
+    private readonly privateKey: string,
+    private readonly apiClient: ApiClient,
+  ) {}
 
   /**
    * Generate a payment token
@@ -14,7 +42,7 @@ export class Youcanpay {
   async tokenizePayment(data: TokenizePaymentRequest): Promise<PaymentToken> {
     const payload = { ...data, pri_key: this.privateKey };
 
-    const response = await this.apiClient.post('tokenize', payload);
+    const response = await this.apiClient.post<TokenizeResponse>('tokenize', payload);
     return {
       tokenId: response.token.id,
       paymentUrl: this.apiClient.paymentUrl(response.token.id),
@@ -27,7 +55,7 @@ export class Youcanpay {
    * @throws Error if there was a networking error
    */
   async getTransaction(transactionId: string): Promise<Transaction> {
-    const response = await this.apiClient.get('transactions/' + transactionId, {
+    const response = await this.apiClient.get<TransactionResponse>('transactions/' + transactionId, {
       pri_key: this.privateKey,
     });
     return {

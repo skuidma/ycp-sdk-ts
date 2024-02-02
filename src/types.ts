@@ -51,7 +51,7 @@ export interface TokenizePaymentRequest {
    * Any extra details to attach with the payment
    * This metadata will be included with the payment webhook
    */
-  metadata?: { [key: string]: any };
+  metadata?: { [key: string]: any }; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   /**
    * URL where to redirect to when payment is successful

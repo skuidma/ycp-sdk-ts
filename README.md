@@ -40,7 +40,7 @@ const token = await ycp.tokenizePayment({
   currency: 'MAD',
   customer_ip: '13.37.4.2',
   // URL where to redirect to when payment is successful
-  sucess_url: '',
+  success_url: '',
   // URL where to redirect to when payment is not successful
   error_url: '',
   // Information about the customer
