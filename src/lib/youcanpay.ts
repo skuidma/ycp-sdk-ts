@@ -3,7 +3,10 @@ import { PaymentToken, TokenizePaymentRequest, Transaction } from '../types';
 import * as crypto from 'crypto';
 
 export class Youcanpay {
-  constructor(private readonly privateKey: string, private readonly apiClient: ApiClient) {}
+  constructor(
+    private readonly privateKey: string,
+    private readonly apiClient: ApiClient,
+  ) {}
 
   /**
    * Generate a payment token
