@@ -23,8 +23,9 @@ export class ApiClient {
    * @param payload Payload to send
    * @throws ApiHttpException If the response has a non-successful status code
    * @throws Error if there was a networking error
+   * @return Returns the response's body directly
    */
-  async post(endpoint: string, payload: object): Promise<any> {
+  async post<T>(endpoint: string, payload: object): Promise<T> {
     try {
       const response = await this.httpClient.post(this.getUrl(endpoint), payload);
       return response.data;
@@ -49,8 +50,9 @@ export class ApiClient {
    * @param query Get parameters to add to the URL
    * @throws ApiHttpException If the response has a non-successful status code
    * @throws Error if there was a networking error
+   * @return Returns the response's body directly
    */
-  async get(endpoint: string, query: { [key: string]: string }): Promise<any> {
+  async get<T>(endpoint: string, query: { [key: string]: string }): Promise<T> {
     try {
       const url = new URL(this.getUrl(endpoint));
       for (const queryKey of Object.keys(query)) {
