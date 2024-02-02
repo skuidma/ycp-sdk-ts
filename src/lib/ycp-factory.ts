@@ -31,7 +31,7 @@ export class YcpFactory {
 
     const httpClient = axios.create({
       headers: {
-        'User-Agent': 'skuid-ycp-sdk-ts',
+        'User-Agent': 'skuidma/ycp-sdk-ts',
       },
     });
 
