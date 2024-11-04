@@ -7,6 +7,10 @@ on:
   release:
     types: [created]
 
+env:
+  NODE_VERSION: 20
+  PNP_VERSION: 8
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,11 +18,11 @@ jobs:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: ${{ env.PNP_VERSION }}
           run_install: false
       - uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: ${{ env.NODE_VERSION }}
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
 
@@ -27,9 +31,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNP_VERSION }}
+          run_install: false
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: ${{ env.NODE_VERSION }}
           registry-url: https://registry.npmjs.org/
       - run: pnpm install --frozen-lockfile
       - run: pnpm publish
