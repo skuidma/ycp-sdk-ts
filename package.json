@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/skuidma/ycp-sdk-ts#readme",
   "devDependencies": {
+    "@eslint/js": "^9.39.1",
     "@tsconfig/node16": "^16.1.8",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.19.2",
@@ -41,7 +42,8 @@
     "jest": "^29.7.0",
     "prettier": "^3.7.4",
     "ts-jest": "^29.4.6",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.49.0"
   },
   "files": [
     "lib/**/*"
@@ -50,6 +52,6 @@
     "axios": "^1.13.2"
   },
   "engines": {
-    "node": "^16 || ^18 || ^20 || ^21 || ^22 || ^23 || ^24 || ^25"
+    "node": "^20 || ^22 || ^24 || ^25"
   }
 }
