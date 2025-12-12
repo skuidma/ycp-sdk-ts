@@ -5,7 +5,7 @@ name: Node.js Package
 
 on:
   release:
-    types: [created]
+    types: [published]
 
 env:
   NODE_VERSION: 20
@@ -31,6 +31,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.release.tag_name }}
       - uses: pnpm/action-setup@v2
         with:
           version: ${{ env.PNP_VERSION }}
