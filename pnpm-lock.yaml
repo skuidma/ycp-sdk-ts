@@ -10,6 +10,9 @@ dependencies:
     version: 1.13.2
 
 devDependencies:
+  '@eslint/js':
+    specifier: ^9.39.1
+    version: 9.39.1
   '@tsconfig/node16':
     specifier: ^16.1.8
     version: 16.1.8
@@ -40,6 +43,9 @@ devDependencies:
   typescript:
     specifier: ^5.9.3
     version: 5.9.3
+  typescript-eslint:
+    specifier: ^8.49.0
+    version: 8.49.0(eslint@9.39.1)(typescript@5.9.3)
 
 packages:
 
@@ -883,7 +889,7 @@ packages:
     dependencies:
       '@typescript-eslint/tsconfig-utils': 8.49.0(typescript@5.9.3)
       '@typescript-eslint/types': 8.49.0
-      debug: 4.3.7
+      debug: 4.4.3
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
@@ -939,7 +945,7 @@ packages:
       '@typescript-eslint/tsconfig-utils': 8.49.0(typescript@5.9.3)
       '@typescript-eslint/types': 8.49.0
       '@typescript-eslint/visitor-keys': 8.49.0
-      debug: 4.3.7
+      debug: 4.4.3
       minimatch: 9.0.5
       semver: 7.7.3
       tinyglobby: 0.2.15
@@ -2978,6 +2984,23 @@ packages:
   /type-fest@4.41.0:
     resolution: {integrity: sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==}
     engines: {node: '>=16'}
+    dev: true
+
+  /typescript-eslint@8.49.0(eslint@9.39.1)(typescript@5.9.3):
+    resolution: {integrity: sha512-zRSVH1WXD0uXczCXw+nsdjGPUdx4dfrs5VQoHnUWmv1U3oNlAKv4FUNdLDhVUg+gYn+a5hUESqch//Rv5wVhrg==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0
+      typescript: '>=4.8.4 <6.0.0'
+    dependencies:
+      '@typescript-eslint/eslint-plugin': 8.49.0(@typescript-eslint/parser@8.49.0)(eslint@9.39.1)(typescript@5.9.3)
+      '@typescript-eslint/parser': 8.49.0(eslint@9.39.1)(typescript@5.9.3)
+      '@typescript-eslint/typescript-estree': 8.49.0(typescript@5.9.3)
+      '@typescript-eslint/utils': 8.49.0(eslint@9.39.1)(typescript@5.9.3)
+      eslint: 9.39.1
+      typescript: 5.9.3
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /typescript@5.9.3:
